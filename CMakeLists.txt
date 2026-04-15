@@ -1,6 +1,6 @@
 ## CMake settings
 cmake_minimum_required(VERSION 3.10)
-project(example_project)
+project(tilt_grid)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## Source files
@@ -30,11 +30,11 @@ endforeach()
 list(REMOVE_DUPLICATES ABSOLUTE_HEADER_DIR_LIST)
 
 ## Executable
-add_executable(example ${ABSOLUTE_SOURCE_LIST})
-target_include_directories(example PUBLIC ${ABSOLUTE_HEADER_DIR_LIST})
+add_executable(tilt-grid ${ABSOLUTE_SOURCE_LIST})
+target_include_directories(tilt-grid PUBLIC ${ABSOLUTE_HEADER_DIR_LIST})
 
 ## Flags
-target_compile_options(example PUBLIC
+target_compile_options(tilt-grid PUBLIC
     -std=c++17
     -g
     -Wall
@@ -43,13 +43,13 @@ target_compile_options(example PUBLIC
 )
 
 ## Definitions
-target_compile_options(example PUBLIC
+target_compile_options(tilt-grid PUBLIC
     $<$<CONFIG:Debug>:-U_FORTIFY_SOURCE>
     $<$<CONFIG:Debug>:-D_FORTIFY_SOURCE=0>
     $<$<CONFIG:Debug>:-D_DEBUG=1>
 )
 
-target_compile_definitions(example PUBLIC
+target_compile_definitions(tilt-grid PUBLIC
     DHT_DEBUG=0
 )
 

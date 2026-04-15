@@ -1,14 +1,7 @@
 # version 1.1.0
 all: run
 
-ifdef OS
-  # Windows
-  EXECUTABLE_FILE ?= example.exe
-else
-  # Linux
-  EXECUTABLE_FILE ?= example
-endif
-
+EXECUTABLE_FILE ?= tilt-grid
 HOST_DESTINATION ?= root@192.168.7.2
 
 .PHONY: help clean generate build deploy run run_only ssh

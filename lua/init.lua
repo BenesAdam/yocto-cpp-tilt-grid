@@ -19,7 +19,7 @@ end
 -- Debug
 local function debug_buffer_start()
 	vim.cmd("vsplit")
-	vim.cmd("term ssh root@192.168.7.2 -t 'gdbserver :2345 /tmp/example; sh'")
+	vim.cmd("term ssh root@192.168.7.2 -t 'gdbserver :2345 /tmp/tilt-grid; sh'")
 	vim.g.debug_term_buf = vim.api.nvim_get_current_buf()
 	vim.cmd("wincmd p")
 end
@@ -39,7 +39,7 @@ if vim.env.SDKTARGETSYSROOT then
 		type = "gdb",
 		request = "attach",
 		target = "192.168.7.2:2345",
-		program = "${workspaceFolder}/build/example",
+		program = "${workspaceFolder}/build/tilt-grid",
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 		args = {},
@@ -53,7 +53,7 @@ if vim.env.SDKTARGETSYSROOT then
 		before = function()
 			vim.fn.system("make build")
 			vim.fn.system([[ssh root@192.168.7.2 "ps | grep '[g]dbserver :2345' | awk '{print \$1}' | xargs -r kill"]])
-			vim.fn.system("scp build/example root@192.168.7.2:/tmp/example")
+			vim.fn.system("scp build/tilt-grid root@192.168.7.2:/tmp/tilt-grid")
 			debug_buffer_start()
 		end,
 	})
@@ -67,7 +67,7 @@ else
 		name = "C++ Debug (GDB)",
 		type = "codelldb",
 		request = "launch",
-		program = "${workspaceFolder}/build/example",
+		program = "${workspaceFolder}/build/tilt-grid",
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 		args = {},
