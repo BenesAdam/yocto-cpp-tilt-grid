@@ -22,6 +22,10 @@ int main(int argc, char** argv)
   std::signal(SIGINT, HandleCancellation);
   uint32_t counter = 0U;
 
+  // I2C address is 0x68
+  // Standard and fast mode supported
+  // Only 7-bit address mode
+
   while (running)
   {
     printf("%u\n", counter);
