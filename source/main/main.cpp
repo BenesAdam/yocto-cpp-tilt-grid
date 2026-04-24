@@ -22,9 +22,17 @@ int main(int argc, char** argv)
   std::signal(SIGINT, HandleCancellation);
   uint32_t counter = 0U;
 
-  // I2C address is 0x68
-  // Standard and fast mode supported
-  // Only 7-bit address mode
+  /* BMI160 address is 0x69
+   * PIN connection
+   * ('breakout board' <- 'rpi0 pin'):
+   *   VIN <- 3.3V
+   *   3V3 <- nothing
+   *   GND <- GND
+   *   SCL <- i2c clock (3.3V)
+   *   SDA <- i2c data  (3.3V)
+   *   CS  <- nothing
+   *   SA0 <- nothing
+   */
 
   while (running)
   {
