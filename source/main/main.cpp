@@ -32,6 +32,8 @@ int main(int argc, char** argv)
    *   SDA <- i2c data  (3.3V)
    *   CS  <- nothing
    *   SA0 <- nothing
+   *
+   * Register 0x00 -> CHIP ID
    */
 
   while (running)
